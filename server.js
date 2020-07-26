@@ -49,4 +49,4 @@ io.on('connection', socket => {
   });
 });
 
-server.listen(port, () => console.log(`server listening on port ${PORT}`));
+server.listen(PORT, () => console.log(`server listening on port ${PORT}`));
