@@ -1,0 +1,29 @@
+{
+  "name": "web-rtc",
+  "version": "1.0.0",
+  "main": "server.js",
+  "author": "Eilif Akerjordet",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . --ext .js --ext .jsx",
+    "pregit": "git add . ",
+    "git": "git commit -m",
+    "postgit": "git push --all",
+    "client": "npm start --prefix client",
+    "server": "nodemon server.js"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-salt": "^1.0.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  }
+}
