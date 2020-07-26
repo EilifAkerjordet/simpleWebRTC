@@ -1,11 +1,22 @@
 const express = require('express');
 const http = require('http');
+const path = require('path');
 
 const app = express();
 const server = http.createServer(app);
 const Socket = require('socket.io');
 
 const io = Socket(server);
+
+const port = process.env.port || 8080;
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.static('client/build'));
+
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build/index.html'));
+});
 
 const rooms = {};
 
@@ -38,4 +49,4 @@ io.on('connection', socket => {
   });
 });
 
-server.listen(8080, () => console.log('server is listening on 8080'));
+server.listen(port, () => console.log(`server listening on port ${port}`));
