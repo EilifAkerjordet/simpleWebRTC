@@ -9,8 +9,6 @@ const Socket = require('socket.io');
 
 const io = Socket(server);
 
-const PORT = process.env.port || 8080;
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -53,4 +51,4 @@ io.on('connection', socket => {
   });
 });
 
-server.listen(PORT, () => console.log(`server listening on port ${PORT}`));
+server.listen(process.env.port || 8080);
