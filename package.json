@@ -11,7 +11,8 @@
     "git": "git commit -m",
     "postgit": "git push --all",
     "client": "npm start --prefix client",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "heroku-postbuild": "cd client && yarn install && yarn build"
   },
   "devDependencies": {
     "eslint": "^6.6.0",
@@ -23,6 +24,7 @@
     "nodemon": "^2.0.4"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "socket.io": "^2.3.0"
   }

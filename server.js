@@ -1,6 +1,7 @@
 const express = require('express');
 const http = require('http');
 const path = require('path');
+const bodyParser = require('body-parser');
 
 const app = express();
 const server = http.createServer(app);
@@ -10,13 +11,16 @@ const io = Socket(server);
 
 const PORT = process.env.port || 8080;
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(express.static('client/build'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-app.use((req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build/index.html'));
-});
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/build/index.html'));
+  });
+}
 
 const rooms = {};
 
