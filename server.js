@@ -8,7 +8,7 @@ const Socket = require('socket.io');
 
 const io = Socket(server);
 
-const port = process.env.port || 8080;
+const PORT = process.env.port || 8080;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -49,4 +49,4 @@ io.on('connection', socket => {
   });
 });
 
-server.listen(port, () => console.log(`server listening on port ${port}`));
+server.listen(port, () => console.log(`server listening on port ${PORT}`));
